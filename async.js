@@ -19,6 +19,7 @@ function useSavedText() {
   rawFileContent = localStorage.getItem("conversations");
   document.getElementById("useSavedText").style.display = "none";
   document.getElementById("txtPicker").style.display = "none";
+  document.getElementById("chatterID").style.display = "none";
   document.getElementById("getNextConversation").style.display = "inline-block";
   pickedFile = true;
   processText();
@@ -51,6 +52,7 @@ fileInput.addEventListener('change', (event) => {
         document.getElementById("txtPicker").style.display = "none";
         document.getElementById("getNextConversation").style.display = "inline-block";
         document.getElementById("useSavedText").style.display = "none";
+        document.getElementById("chatterID").style.display = "none";
         pickedFile = true;
         setTimeout(getNextConversation,100);
         
