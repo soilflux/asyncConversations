@@ -2,6 +2,7 @@ if (localStorage.getItem("chatterID")) {document.getElementById("chatterID").val
 
 const fileInput = document.getElementById('txtPicker');
 let sortedMatrix = Array.from({ length: 100 }, () => []);
+let pickedFile = false;
 
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0]; // Get the selected file
@@ -21,6 +22,8 @@ fileInput.addEventListener('change', (event) => {
             }  
         };
         reader.readAsText(file);
+        document.getElementById("txtPicker").style.display = "none";
+        pickedFile = true;
         setTimeout(getNextConversation,1);
         
     }
@@ -48,7 +51,7 @@ function getNextConversation() {
 }
 
 function checkID() {
-  if (document.getElementById("chatterID").value == "a" || document.getElementById("chatterID").value == "s") {
+  if ((document.getElementById("chatterID").value == "a" || document.getElementById("chatterID").value == "s") && !pickedFile) {
     document.getElementById("txtPicker").style.display = "inline-block";
   }
   localStorage.setItem("chatterID",document.getElementById("chatterID").value);
