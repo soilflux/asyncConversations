@@ -49,6 +49,7 @@ fileInput.addEventListener('change', (event) => {
         reader.readAsText(file);
         document.getElementById("txtPicker").style.display = "none";
         document.getElementById("getNextConversation").style.display = "inline-block";
+        document.getElementById("useSavedText").style.display = "none";
         pickedFile = true;
         setTimeout(getNextConversation,100);
         
