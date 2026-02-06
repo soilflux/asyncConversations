@@ -5,10 +5,10 @@
       <link style="text/css" rel="stylesheet" href="stylesheet.css"/>
       <title>Async Conversation</title>
     </head>
-    <body oncontextmenu="return false;">
+    <body class = "app-wrapper" oncontextmenu="return false;">
       <input id="chatterID"/> 
       <input type="file" id="txtPicker" accept=".txt" /> 
-      <button onmousedown = "getNextConversation()"></button>
+      <button id = "getNextConversation" onmousedown = "getNextConversation()">Next</button>
       <small id="currentConversation"></small>
       <textarea id="response"></textarea>
     </body>
