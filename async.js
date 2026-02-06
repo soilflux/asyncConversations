@@ -1,10 +1,40 @@
-if (localStorage.getItem("chatterID")) {document.getElementById("chatterID").value= localStorage.getItem("chatterID");}
+if (localStorage.getItem("chatterID")) {
+  document.getElementById("chatterID").value = localStorage.getItem("chatterID");
+}
+
+if (localStorage.getItem("conversations")) {
+  document.getElementById("useSavedText").style.display = "inline-block";
+}
 
 const fileInput = document.getElementById('txtPicker');
 let sortedMatrix = Array.from({ length: 100 }, () => []);
+
 let rawFileContent = "";
+
+
 let pickedFile = false;
 let conversationID = -1;
+
+function useSavedText() {
+  rawFileContent = localStorage.getItem("conversations");
+  document.getElementById("useSavedText").style.display = "none";
+  document.getElementById("txtPicker").style.display = "none";
+  document.getElementById("getNextConversation").style.display = "inline-block";
+  pickedFile = true;
+  processText();
+  setTimeout(getNextConversation,10);
+}
+
+function processText() {
+  let content = rawFileContent.split(":::");
+  for (var i = 0; i < content.length; i++) {
+    for (var j = 0; j < 100; j++) {
+      if (content[i].startsWith(j)) {
+        sortedMatrix[j].push(content[i].replace(j + "",""));
+      }
+    }
+  }
+}
 
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0]; // Get the selected file
@@ -13,15 +43,8 @@ fileInput.addEventListener('change', (event) => {
         const reader = new FileReader();
         
         reader.onload = function(e) {   
-            rawFileContent = e.target.result;
-            let content = rawFileContent.split(":::");
-            for (var i = 0; i < content.length; i++) {
-              for (var j = 0; j < 100; j++) {
-                if (content[i].startsWith(j)) {
-                  sortedMatrix[j].push(content[i].replace(j + "",""));
-                }
-              }
-            }  
+          rawFileContent = e.target.result;
+          processText();      
         };
         reader.readAsText(file);
         document.getElementById("txtPicker").style.display = "none";
@@ -36,6 +59,7 @@ function getNextConversation() {
   console.log(rawFileContent)
   if (conversationID != -1) {
     rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").innerText + "\n";
+    localStorage.setItem("conversations",rawFileContent);
   }
   console.log(rawFileContent)
   const listContainer = document.getElementById("currentConversation");
@@ -44,8 +68,7 @@ function getNextConversation() {
   listContainer.innerHTML = ""; 
 
   for (var j = conversationID+1; j < 100; j++) {
-    console.log(sortedMatrix);
-    if (sortedMatrix[j][sortedMatrix[j].length-1].startsWith("s ")) {
+    if (!sortedMatrix[j][sortedMatrix[j].length-1].startsWith(document.getElementById("chatterID").value + " ")) {
       conversationID = j;
       sortedMatrix[j].forEach((item) => {
         let li = document.createElement("li");
