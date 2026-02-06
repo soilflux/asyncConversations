@@ -1,5 +1,5 @@
 html {
-overflow: scroll;
+overflow: hidden;
  overflow-x: hidden;
 -webkit-touch-callout: none;
 -webkit-user-select: none;
