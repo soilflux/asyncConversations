@@ -16,9 +16,7 @@ fileInput.addEventListener('change', (event) => {
                   sortedMatrix[j].push(content[i].replace(j + "",""));
                 }
               }
-            }
-            
-            
+            }  
         };
         reader.readAsText(file);
         setTimeout(getNextConversation,1);
