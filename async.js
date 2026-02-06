@@ -37,7 +37,7 @@ function getNextConversation() {
       sortedMatrix[j].forEach((item) => {
         let li = document.createElement("li");
         li.innerText = item;
-        listContainer.appendChild(li);
+        listContainer.prepend(li); // Adds to the top instead of the bottom
       });
       
       break; // Exit loop after finding and displaying one conversation
