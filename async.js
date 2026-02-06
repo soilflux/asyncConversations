@@ -65,4 +65,29 @@ function checkID() {
   localStorage.setItem("chatterID",document.getElementById("chatterID").value);
 }
 
+function downloadTextFile() {
+    // 1. Create a Blob with the text content
+    // We specify the type as 'text/plain'
+    const blob = new Blob([rawFileContent], { type: 'text/plain' });
+
+    // 2. Create a temporary URL for the Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // 3. Create a hidden <a> element
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    
+    // 4. Set the name of the file to be downloaded
+    a.download = 'test.txt';
+
+    // 5. Add to page, click it, and remove it
+    document.body.appendChild(a);
+    a.click();
+    
+    // 6. Clean up: remove the link and revoke the URL to save memory
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+}
+
 setInterval(checkID, 50);
