@@ -14,8 +14,8 @@ font-size:20px;
 background-size:cover;
 }
 #chatterID {
-  width:25px;
-  height:20px;
+  width:27px;
+  height:21px;
   font-size:16px;
 }
 #txtPicker {
@@ -23,6 +23,8 @@ background-size:cover;
 }
 #getNextConversation {
   font-size:16px;
+  height:22px;
+  width:50px;
 }
 #response {
   height:5%;
