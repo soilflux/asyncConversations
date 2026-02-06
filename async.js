@@ -50,7 +50,7 @@ fileInput.addEventListener('change', (event) => {
         document.getElementById("txtPicker").style.display = "none";
         document.getElementById("getNextConversation").style.display = "inline-block";
         pickedFile = true;
-        setTimeout(getNextConversation,10);
+        setTimeout(getNextConversation,100);
         
     }
 });
@@ -60,6 +60,7 @@ function getNextConversation() {
   if (conversationID != -1) {
     rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").innerText + "\n";
     localStorage.setItem("conversations",rawFileContent);
+    document.getElementById("response").innerText = "";
   }
   console.log(rawFileContent)
   const listContainer = document.getElementById("currentConversation");
