@@ -27,6 +27,9 @@ background-size:cover;
 #useSavedText {
   display:none;
 }
+#downloadBtn {
+  display:none;
+}
 #response {
   height:5%;
   width:100%;

@@ -61,6 +61,7 @@ function getNextConversation() {
     rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").innerText + "\n";
     localStorage.setItem("conversations",rawFileContent);
     document.getElementById("response").innerText = "";
+    document.getElementById("downloadBtn").style.display = "inline-block";
   }
   console.log(rawFileContent)
   const listContainer = document.getElementById("currentConversation");
