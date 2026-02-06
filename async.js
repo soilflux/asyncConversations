@@ -67,7 +67,7 @@ fileInput.addEventListener('change', (event) => {
 
 function getNextConversation() {
   if (conversationID != -1) {
-    rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").value + "\n";
+    rawFileContent += "\n" + ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").value;
     localStorage.setItem("conversations",rawFileContent);
     document.getElementById("response").value = "";
     document.getElementById("downloadBtn").style.display = "inline-block";
