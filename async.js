@@ -27,9 +27,10 @@ function useSavedText() {
 
 function processText() {
   let content = rawFileContent.split(":::");
+  console.log(content)
   for (var i = 0; i < content.length; i++) {
     for (var j = 0; j < 100; j++) {
-      if (content[i].startsWith(j)) {
+      if (content[i].startsWith(j +"a") || content[i].startsWith(j +"s")) {
         sortedMatrix[j].push(content[i].replace(j + "",""));
       }
     }
@@ -57,7 +58,6 @@ fileInput.addEventListener('change', (event) => {
 });
 
 function getNextConversation() {
-  console.log(rawFileContent)
   if (conversationID != -1) {
     rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").innerText + "\n";
     localStorage.setItem("conversations",rawFileContent);
