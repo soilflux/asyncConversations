@@ -23,6 +23,7 @@ fileInput.addEventListener('change', (event) => {
         };
         reader.readAsText(file);
         document.getElementById("txtPicker").style.display = "none";
+        document.getElementById("getNextConversation").style.display = "inline-block";
         pickedFile = true;
         setTimeout(getNextConversation,1);
         
