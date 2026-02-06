@@ -1,3 +1,5 @@
+if (localStorage.getItem("chatterID")) {document.getElementById("chatterID").value= localStorage.getItem("chatterID");}
+
 const fileInput = document.getElementById('txtPicker');
 let sortedMatrix = Array.from({ length: 100 }, () => []);
 
@@ -49,6 +51,7 @@ function checkID() {
   if (document.getElementById("chatterID").value == "a" || document.getElementById("chatterID").value == "s") {
     document.getElementById("txtPicker").style.display = "inline-block";
   }
+  localStorage.setItem("chatterID",document.getElementById("chatterID").value);
 }
 
 setInterval(checkID, 50);
