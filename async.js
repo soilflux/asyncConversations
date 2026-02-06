@@ -105,7 +105,7 @@ function downloadTextFile() {
     a.href = url;
     
     // 4. Set the name of the file to be downloaded
-    a.download = 'test.txt';
+    a.download = 'conversations.txt';
 
     // 5. Add to page, click it, and remove it
     document.body.appendChild(a);
