@@ -11,7 +11,6 @@ color:purple;
 background-color:hotpink;
 font-family:sans-sarif;
 font-size:20px;
-height: 3000px;
 background-size:cover;
 }
 #chatterID {
@@ -21,25 +20,7 @@ background-size:cover;
 #txtPicker {
   display:none;
 }
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100dvh; /* dvh = dynamic viewport height (handles mobile toolbars) */
-}
-
-/* The conversation list (replaces your top 80%) */
-#currentConversation {
-  flex: 1;          /* Takes up all remaining space */
-  overflow-y: auto; /* Scrolls if there are many messages */
-}
-
-/* The input area (replaces your #response) */
 #response {
-  height: auto;     /* Let it grow with the text */
-  min-height: 60px; /* Minimum height */
-  width: 100%;
-  background: white;
-  border-top: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box; /* Ensures padding doesn't break the width */
+  height:5%;
+  width:100%;
 }
