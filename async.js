@@ -11,6 +11,10 @@ let sortedMatrix = Array.from({ length: 100 }, () => []);
 
 let rawFileContent = "";
 
+fileName = "conversations.txt";
+if (localStorage.getItem("fileName")) {
+  fileName = localStorage.getItem("fileName");
+}
 
 let pickedFile = false;
 let conversationID = -1;
@@ -40,6 +44,8 @@ function processText() {
 
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0]; // Get the selected file
+    fileName = event.target.files[0].name;
+    localStorage.setItem("fileName",fileName);
     
     if (file) {
         const reader = new FileReader();
@@ -61,9 +67,9 @@ fileInput.addEventListener('change', (event) => {
 
 function getNextConversation() {
   if (conversationID != -1) {
-    rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").innerText + "\n";
+    rawFileContent += ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").value + "\n";
     localStorage.setItem("conversations",rawFileContent);
-    document.getElementById("response").innerText = "";
+    document.getElementById("response").value = "";
     document.getElementById("downloadBtn").style.display = "inline-block";
   }
   console.log(rawFileContent)
@@ -107,7 +113,7 @@ function downloadTextFile() {
     a.href = url;
     
     // 4. Set the name of the file to be downloaded
-    a.download = 'conversations.txt';
+    a.download = fileName;
 
     // 5. Add to page, click it, and remove it
     document.body.appendChild(a);
