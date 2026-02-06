@@ -14,8 +14,9 @@ font-size:20px;
 background-size:cover;
 }
 #chatterID {
-  width:30px;
-  height:30px;
+  width:20px;
+  height:20px;
+  font-size:16px;
 }
 #txtPicker {
   display:none;
