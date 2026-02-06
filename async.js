@@ -25,16 +25,22 @@ fileInput.addEventListener('change', (event) => {
 });
 
 function getNextConversation() {
+  const listContainer = document.getElementById("currentConversation");
+  
+  // 1. Clear the last conversation immediately
+  listContainer.innerHTML = ""; 
+
   for (var j = 0; j < 100; j++) {
     console.log(sortedMatrix);
     if (sortedMatrix[j][sortedMatrix[j].length-1].startsWith("s ")) {
-      const listContainer = document.getElementById("currentConversation");
+      
       sortedMatrix[j].forEach((item) => {
         let li = document.createElement("li");
         li.innerText = item;
         listContainer.appendChild(li);
       });
-      break;
+      
+      break; // Exit loop after finding and displaying one conversation
     }
   }
 }
