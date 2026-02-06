@@ -6,6 +6,11 @@
       <title>Async Conversation</title>
     </head>
     <body oncontextmenu="return false;">
+      <input id="chatterID"/> 
       <input type="file" id="txtPicker" accept=".txt" /> 
+      <button onmousedown = "getNextConversation()"></button>
+      <small id="currentConversation"></small>
+      <textarea id="response"></textarea>
     </body>
+    <script src="async.js"></script>
   </html>

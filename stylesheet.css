@@ -7,8 +7,23 @@ overflow: scroll;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
-color:white;
+color:purple;
+background-color:hotpink;
 font-family:sans-sarif;
+font-size:20px;
 height: 3000px;
 background-size:cover;
+}
+#chatterID {
+  width:20px;
+}
+#txtPicker {
+  display:none;
+}
+#response {
+  top:80%;
+  left:0px;
+  height:20%;
+  width:100%;
+  position: absolute;
 }
