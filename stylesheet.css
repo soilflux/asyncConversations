@@ -30,7 +30,6 @@ background-size:cover;
   font-size:16px;
 }
 #currentConversation {
-  line-height:50%;
 }
 
 [contenteditable="true"] {
