@@ -21,6 +21,9 @@ background-size:cover;
 #txtPicker {
   display:none;
 }
+#getNextConversation {
+  font-size:16px;
+}
 #response {
   height:5%;
   width:100%;
