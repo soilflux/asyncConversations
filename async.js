@@ -7,7 +7,8 @@ if (localStorage.getItem("conversations")) {
 }
 
 const fileInput = document.getElementById('txtPicker');
-let sortedMatrix = Array.from({ length: 100 }, () => []);
+const totalConversations = 100
+let sortedMatrix = Array.from({ length: totalConversations }, () => []);
 
 let rawFileContent = "";
 
@@ -70,7 +71,9 @@ function getNextConversation() {
     rawFileContent += "\n" + ":::" + conversationID + document.getElementById("chatterID").value + " " + document.getElementById("response").value;
     localStorage.setItem("conversations",rawFileContent);
     document.getElementById("response").value = "";
-    document.getElementById("downloadBtn").style.display = "inline-block";
+    if (document.getElementById("conversationsLeft").innerHTML.startsWith("1")) {
+      document.getElementById("conversationsLeft").innerHTML = "ur done:o";
+    }
   }
   console.log(rawFileContent)
   const listContainer = document.getElementById("currentConversation");
@@ -78,8 +81,9 @@ function getNextConversation() {
   // 1. Clear the last conversation immediately
   listContainer.innerHTML = ""; 
 
-  for (var j = conversationID+1; j < 100; j++) {
+  for (var j = conversationID+1; j < totalConversations; j++) {
     if (!sortedMatrix[j][sortedMatrix[j].length-1].startsWith(document.getElementById("chatterID").value + " ")) {
+      document.getElementById("conversationsLeft").innerHTML = (totalConversations-j) + " to go:3";
       conversationID = j;
       sortedMatrix[j].forEach((item) => {
         let li = document.createElement("li");
